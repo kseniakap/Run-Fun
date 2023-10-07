@@ -1,32 +1,14 @@
 @import "./../../style/variables.scss";
 .item {
-  width: 380px;
-  min-height: 450px;
-  margin-bottom: 50px;
-  overflow: hidden;
-  transition: box-shadow 0.5s ease;
-  border-radius: 10px 10px 0 0;
-  position: relative;
-  padding: 20px 10px 10px;
+  width: 340px;
+  min-height: 457px;
+  padding: 10px;
   cursor: pointer;
   transition: $transition;
+
   &:hover {
     box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.1);
   }
-  &:hover .instock {
-    background-color: $accent-color;
-    color: #fff;
-  }
-}
-.instock {
-  padding: 5px 10px;
-  border-radius: 10px 0 0 0;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  z-index: 10;
-  border: 1px solid $accent-color;
-  transition: all 0.5s ease;
 }
 
 .img {
@@ -34,8 +16,8 @@
   margin: 0 auto;
   width: 90%;
   height: 220px;
-  transition: $transition!important;
-  &:hover{
+  transition: $transition !important;
+  &:hover {
     transform: scale(1.1);
   }
 }

@@ -1,12 +1,11 @@
 import React from "react";
 import Main from "./../components/main/Main";
-import Opinions from "./../components/opinions/Opinions";
+import Header from "../components/header/Header";
+
 const MainPage = () => {
   return (
     <>
-
-      <Main/>
-      <Opinions />
+      <Main />
     </>
   );
 };

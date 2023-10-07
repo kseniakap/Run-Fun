@@ -3,7 +3,7 @@ import { CustomContext } from '../../Context'
 import { useTranslation } from 'react-i18next'
 import Order from '../order/Order'
 import { fadeIn } from 'react-animations'
-import Radium, { StyleRoot } from 'radium'
+
 import { Link } from 'react-router-dom'
 import './../../style/style.scss'
 import st from './OrderList.module.scss'
@@ -14,13 +14,6 @@ const OrderList = () => {
   )
   const orderRef = useRef(null)
   const { t } = useTranslation()
-
-  const styles = {
-    fadeIn: {
-      animation: 'x 2s',
-      animationName: Radium.keyframes(fadeIn, 'fadeIn'),
-    },
-  }
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -93,14 +86,14 @@ const OrderList = () => {
   }
 
   return (
-    <StyleRoot>
+    <>
       {cardOpen && (
-        <div ref={orderRef} className={st.shop} style={styles.fadeIn}>
+        <div ref={orderRef} className={st.shop}>
           <h2 className={st.title}>Ваша корзина</h2>
           {cart && cart.length > 0 ? showOrders(cart) : showNothing()}
         </div>
       )}
-    </StyleRoot>
+    </>
   )
 }
 

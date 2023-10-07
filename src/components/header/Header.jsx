@@ -21,84 +21,65 @@ const Header = ({ order }) => {
 
   return (
     <header>
-      <div className="container">
-        <div className={st.header}>
-          <a href="/" className={st.logo}>
-            <img src={ICONS.iconLogoSign} alt="logo icon" />
-            <img src={IMAGES.iconLogo} alt="logo" className={st.logoImg} />
-          </a>
-          <div>
-            <nav>
-              <ul className={st.list}>
-                <li>
-                  <CustomNavLink to="/">
-                    {t('homePage.headerMenu.link1')}
-                  </CustomNavLink>
-                </li>
-                <li>
-                  <CustomNavLink to="/goods">
-                    {t('homePage.headerMenu.link3')}
-                  </CustomNavLink>
-                </li>
-                <li>
-                  <CustomNavLink to="/about">
-                    {t('homePage.headerMenu.link2')}
-                  </CustomNavLink>
-                </li>
-
-                <li>
-                  <CustomNavLink to="/team">
-                    {t('homePage.headerMenu.link4')}
-                  </CustomNavLink>
-                </li>
-                <li>
-                  <CustomNavLink to="/login">
-                    {t('homePage.headerMenu.link6')}
-                  </CustomNavLink>
-                </li>
-                <li>
-                  <CustomNavLink to="/admin">
-                   Панель админа
-                  </CustomNavLink>
-                </li>
-              </ul>
-
+      <div className={st.header_top}>
+        <div className="container">
+          <div className={st.header_top_container}>
+            <div className={st.header_wrapper}>
+              <a href="/" className={st.logo}>
+                Логотип
+              </a>
+              <p>Время работы: 10:00 - 22:00</p>
+            </div>
+            <div className={st.header_wrapper}>
+              любимое
+              {/* логики пока нет */}
+              <CustomNavLink to="/login">аккаунт</CustomNavLink>
               <FaBasketShopping
                 onClick={() => setCardOpen(!cardOpen)}
                 className={`basket ${cardOpen && 'active'}`}
               />
-            </nav>
-          </div>
-          <OrderList order={order} />
-          <div className={st.language}>
-            <button
-              type="button"
-              data-lang="ru"
-              className={currentLanguage === 'ru' ? 'active-lang' : ''}
-              onClick={() => changeLanguage('ru')}
-            >
-              ru
-            </button>
-            <span>/</span>
-            <button
-              type="button"
-              data-lang="en"
-              className={currentLanguage === 'en' ? 'active-lang' : ''}
-              onClick={() => changeLanguage('en')}
-            >
-              en
-            </button>
-          </div>
-          <div className={st.entranceExit}>
-            {user && user.name && user.name.length ? (
-              <Link to="/" onClick={() => logOutUser()}>
-                {t('homePage.headerMenu.logOut')}
-              </Link>
-            ) : (
-              <Link to="/login"> {t('homePage.headerMenu.loginIn')}</Link>
-            )}
+            </div>
           </div>
         </div>
+      </div>
+
+      <div className={st.header_bottom}>
+        <div className="container">
+          <div className={st.header_bottom_container}>
+            {/* выпадающие меню
+             */}
+            <p>каталог товаров</p>
+
+            <nav>
+              <ul className={st.list}>
+                <li>
+                  <a href="/" to="/about">
+                    О нас
+                  </a>
+                </li>
+                <li>
+                  <a href="/">Акции</a>
+                </li>
+                <li>
+                  <a href="/">Новинки</a>
+                </li>
+              </ul>
+            </nav>
+            <p>социальные сети</p>
+            <p>поиск</p>
+          </div>
+        </div>
+
+        <OrderList order={order} />
+        {/* <div className={st.entranceExit}>
+          {user && user.name && user.name.length ? (
+            <Link to="/" onClick={() => logOutUser()}>
+              {t('homePage.headerMenu.logOut')}
+            </Link>
+          ) : (
+            <Link to="/login"> {t('homePage.headerMenu.loginIn')}</Link>
+          )}
+        </div> */}
       </div>
     </header>
   )

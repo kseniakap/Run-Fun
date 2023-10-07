@@ -3,16 +3,10 @@ import { useTranslation } from "react-i18next";
 import { Pagination } from "antd";
 import Categories from "../components/categories/Categories";
 import List from "../components/list/List";
-import HeaderComponents from "../components/headerComponents/HeaderComponents";
-import IMAGES from "../assets/img";
 
 import "./../style/style.scss";
 
-const GoodsPage = ({
-  // addToOrder,
-  list,
-  setList,
-}) => {
+const GoodsPage = ({ list, setList }) => {
   const { t } = useTranslation();
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [sort, setSort] = useState(null);
@@ -50,13 +44,6 @@ const GoodsPage = ({
 
   return (
     <>
-      <HeaderComponents
-        pageTitle={t("goodsPage.headerTitle")}
-        headerImage={IMAGES.goodsHeaderImg}
-        activeLink={"/goods"}
-        link="/"
-        textLink={t("homePage.headerMenu.link1")}
-      />
       <div className="container">
         <Categories
           chooseCategory={chooseCategory}
@@ -69,27 +56,7 @@ const GoodsPage = ({
             justifyContent: "space-between",
             marginBottom: "10px",
           }}
-        >
-          <div style={{ marginBottom: "30px" }}>
-            {t("goodsPage.shown")} {filteredListByCategory.length}{" "}
-            <span>
-              {" "}
-              {t("goodsPage.outOf")} {filterListByCountPage.length}{" "}
-            </span>
-            {t("goodsPage.products")}
-          </div>
-          <div className="btnSort">
-            <button className={isActive("big")} onClick={() => setSort("big")}>
-              {t("goodsPage.ascending")}
-            </button>
-            <button
-              className={isActive("less")}
-              onClick={() => setSort("less")}
-            >
-              {t("goodsPage.descending")}
-            </button>
-          </div>
-        </div>
+        ></div>
         <List
           //  addToOrder={addToOrder}
           list={sortList}

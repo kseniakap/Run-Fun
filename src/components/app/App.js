@@ -5,7 +5,7 @@ import Header from "./../header/Header";
 import Footer from "./../footer/Footer";
 import {
   MainPage,
-  AboutPage,
+
   GoodsPage,
   OneGoodPage,
   TeamPage,
@@ -28,7 +28,7 @@ function App() {
 
           <Routes>
             <Route path="/" element={<MainPage />} />
-            <Route path="/about" element={<AboutPage />} />
+      
             <Route
               path="/goods"
               element={<GoodsPage list={list} setList={setList} />}

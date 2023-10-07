@@ -1,157 +1,20 @@
-import React, { useContext } from 'react'
-import { CustomContext } from '../../Context'
-import { useTranslation } from 'react-i18next'
-import { fadeIn } from 'react-animations'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
-import 'react-lazy-load-image-component/src/effects/blur.css'
-import Radium, { StyleRoot } from 'radium'
-import ICONS from './../../assets/icons'
-import IMAGES from './../../assets/img'
+import React from 'react'
+import { Link } from 'react-router-dom'
+import LinkImgOne from './linkImg-1.png'
 import './../../style/style.scss'
 import st from './Main.module.scss'
 
 const Main = () => {
-  const { t } = useTranslation()
-
-  const styles = {
-    fadeIn: {
-      animation: '2s',
-      animationName: Radium.keyframes(fadeIn, 'fadeIn'),
-    },
-  }
-
   return (
     <>
-      <StyleRoot>
-        <div className={st.mainImg}>
-          <LazyLoadImage
-            style={styles.fadeIn}
-            src={IMAGES.presentationImg}
-            alt="изобрашение в шапке сайта"
-            effect="blur"
-            height={600}
-            width="100%"
-          />
-        </div>
-      </StyleRoot>
-      <div className={st.mainImgText}>
-        <div className="container">
-          <h1 className={`title ${st.title}`}>{t('homePage.mainImg.title')}</h1>
-          <p
-            className={`text-descr ${st.text_descr}`}
-            dangerouslySetInnerHTML={{
-              __html: t('homePage.mainImg.subtitle'),
-            }}
-          />
-        </div>
-      </div>
-
-      <section className={st.plans}>
-        <div className="container">
-          <div className={st.list}>
-            <div className={st.item}>
-              <div className={st.item__title}>Project Plan</div>
-              <div className={`text-descr ${st.item__descr}`}>
-                There are many variations of the passages of lorem Ipsum from
-                available, majority.
-              </div>
-              <a className={st.item__link} href="/">
-                Смотреть больше
-                <img src={ICONS.iconArrow} alt="стрелка" />
-              </a>
-            </div>
-            <div className={st.item}>
-              <div className={st.item__title}>Project Plan</div>
-              <div className={`text-descr ${st.item__descr}`}>
-                There are many variations of the passages of lorem Ipsum from
-                available, majority.
-              </div>
-              <a className={st.item__link} href="/">
-                Смотреть больше
-                <img src={ICONS.iconArrow} alt="стрелка" />
-              </a>
-            </div>
-            <div className={st.item}>
-              <div className={st.item__title}>Project Plan</div>
-              <div className={`text-descr ${st.item__descr}`}>
-                There are many variations of the passages of lorem Ipsum from
-                available, majority.
-              </div>
-              <a className={st.item__link} href="/">
-                Смотреть больше
-                <img src={ICONS.iconArrow} alt="arrrow" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
       <section>
         <div className="container">
-          <div className={st.wrapper}>
-            <div className={st.content}>
-              <h1 className="title"> {t('homePage.mainContent.title')}</h1>
-              <p
-                className={st.descr}
-                dangerouslySetInnerHTML={{
-                  __html: t('homePage.mainContent.descr'),
-                }}
-              ></p>
-              <div className={st.tel}>
-                <a href="tel:89103022000" className={st.imgTel}>
-                  <LazyLoadImage
-                    src={ICONS.imgTel}
-                    alt="картинка телефона"
-                    effect="blur"
-                  />
-                </a>
-                <div className={st.telNum}>
-                  <span>
-                    <a href="tel:89103022000" className={st.number}>
-                      8-910-302-20-00
-                    </a>
-                  </span>
-                  <span> {t('homePage.mainContent.signature')}</span>
-                </div>
-              </div>
+          <section className={st.photos}>
+            <div className={st.imageContainer}>
+              <img src={LinkImgOne} alt="изображение бегунов" />
+              <Link to="/goods"> ПЕРЕЙТИ В КАТАЛОГ</Link>
             </div>
-            <LazyLoadImage
-              className={st.img}
-              src={IMAGES.interiorPhoto}
-              alt="about us"
-              effect="blur"
-            />
-          </div>
-        </div>
-      </section>
-      <section className={st.brand}>
-        <div className="container">
-          <div className={st.brandWrapper}>
-            <LazyLoadImage
-              src={ICONS.iconHome}
-              alt="брэнд Home"
-              effect="blur"
-            />
-            <LazyLoadImage
-              src={ICONS.iconStyleVintage}
-              alt="брэнд StyleVintage"
-              effect="blur"
-            />
-            <LazyLoadImage
-              src={ICONS.iconBrand}
-              alt="брэнд Brand"
-              effect="blur"
-            />
-            <LazyLoadImage
-              src={ICONS.iconNatureHome}
-              alt="брэнд NatureHome"
-              effect="blur"
-            />
-            <LazyLoadImage
-              src={ICONS.iconClassic}
-              alt="брэнд Classic"
-              effect="blur"
-            />
-          </div>
+          </section>
         </div>
       </section>
     </>

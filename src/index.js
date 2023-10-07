@@ -6,18 +6,10 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { Context } from "./Context";
 
 import { fadeIn } from "react-animations";
-import Radium, { StyleRoot } from "radium";
 
 import "./style/style.scss";
 
 const App = lazy(() => import("./components/app/App"));
-
-const styles = {
-  fadeIn: {
-    animation: "x 2s",
-    animationName: Radium.keyframes(fadeIn, "fadeIn"),
-  },
-};
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -40,25 +32,19 @@ const DelayedFallback = () => {
     return () => clearTimeout(delayTimeout);
   }, []);
 
-  return showFallback ? (
-    <div style={styles.fadeIn} className="fallback">
-      Loading....
-    </div>
-  ) : null;
+  return showFallback ? <div className="fallback">Loading....</div> : null;
 };
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <StyleRoot>
-      <Suspense fallback={<DelayedFallback />}>
-        <Router>
-          <Context>
-            <App />
-          </Context>
-          <ScrollToTop />
-        </Router>
-      </Suspense>
-    </StyleRoot>
+    <Suspense fallback={<DelayedFallback />}>
+      <Router>
+        <Context>
+          <App />
+        </Context>
+        <ScrollToTop />
+      </Router>
+    </Suspense>
   </React.StrictMode>
 );

@@ -31,7 +31,6 @@ const Item = ({ list }) => {
         />
         <div className={st.content}>
           <h2 className={st.name}>{name}</h2>
-          <p className={st.descr}>{description}</p>
           <div className={st.price}>
             {newPrice ? (
               <>
@@ -45,11 +44,6 @@ const Item = ({ list }) => {
               <p>{formatPrice(price)} ₽</p>
             )}
           </div>
-          {totalCount ? (
-            ''
-          ) : (
-            <p className={st.instock}>{t('goodsPage.outOfStock')}</p>
-          )}
         </div>
       </Link>
     </>
